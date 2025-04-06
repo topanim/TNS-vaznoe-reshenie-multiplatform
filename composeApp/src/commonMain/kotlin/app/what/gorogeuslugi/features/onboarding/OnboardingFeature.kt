@@ -25,7 +25,6 @@ class OnboardingFeature(override val data: OnboardingProvider) : NavComponent<On
     Feature<OnboardingController, OnboardingEvents>(), KoinComponent {
     override val controller: OnboardingController by inject()
 
-
     @Composable
     override fun content(modifier: Modifier) {
         val state by controller.collectStates()
@@ -48,6 +47,7 @@ class OnboardingFeature(override val data: OnboardingProvider) : NavComponent<On
                             CircularProgressIndicator()
                         }
                     }
+
                     RemoteState.Success -> {
                         navigation.c.navigate(MainProvider)
                         controller.clearAction()

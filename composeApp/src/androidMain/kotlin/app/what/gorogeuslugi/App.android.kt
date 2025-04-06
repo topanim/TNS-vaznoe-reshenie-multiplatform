@@ -27,8 +27,7 @@ class AppActivity : ComponentActivity() {
                 ProvideGlobalSheet {
                     NavigationHost(
                         modifier = Modifier.background(colorScheme.background),
-                        start = if (AppSettings.getTokenOrNull() == null) OnboardingProvider else
-                            MainProvider
+                        start = OnboardingProvider
                     ) {
                         onboardingRegistry()
                         mainRegistry()

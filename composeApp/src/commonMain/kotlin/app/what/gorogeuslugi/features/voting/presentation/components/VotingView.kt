@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Build
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -63,7 +65,23 @@ fun VotingView(
         Gap(12)
         HorizontalDivider(modifier = Modifier.fillMaxWidth().padding(16.dp))
         Gap(12)
-        InfoBlock()
+        Column {
+            Text(
+                "Информация о голосовании",
+                fontSize = 20.sp,
+                fontWeight = FontWeight(700),
+                lineHeight = 20.sp,
+                color = buttonBlack
+            )
+
+            Gap(16)
+
+            InfoBlock(Icons.Default.Build, buildLinkText("Ссылка на конференцию", state.meet?.meeting_link ?: ""))
+
+            Gap(12)
+
+            InfoBlock(Icons.Default.Build, "")
+        }
         Gap(12)
         HorizontalDivider(modifier = Modifier.fillMaxWidth().padding(16.dp))
         Gap(12)
