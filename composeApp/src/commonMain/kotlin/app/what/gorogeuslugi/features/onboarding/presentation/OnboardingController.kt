@@ -10,6 +10,7 @@ import app.what.gorogeuslugi.foundation.data.RemoteState
 import app.what.gorogeuslugi.foundation.utils.safeExecute
 import app.what.gorogeuslugi.network.api.Api
 import app.what.gorogeuslugi.network.api.ApiClient
+import java.util.logging.Logger
 
 class OnboardingController(
     private val request: ApiClient
@@ -28,7 +29,11 @@ class OnboardingController(
         }
 
         is OnboardingEvents.PasswordText -> {
+            co.touchlab.kermit.Logger.d("AAAAAAAAAAA: ${viewEvent.text}")
+
             updateState { copy(password = viewEvent.text) }
+
+            co.touchlab.kermit.Logger.d("AAAAAAAAAAA: ${viewState.password}")
         }
 
         is OnboardingEvents.CodeText -> {

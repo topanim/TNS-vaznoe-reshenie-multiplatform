@@ -7,6 +7,7 @@ import java.time.LocalDate
 data class VotingState(
     val meetId: Int? = null,
     val meet: Api.Meetings.GetOne.Response? = null,
+    val sendDoc: String? = null,
     val questions: List<Api.Questions.GetAllByMeeting.Response.Question> = emptyList(),
 )
 

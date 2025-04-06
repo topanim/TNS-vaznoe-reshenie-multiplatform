@@ -66,6 +66,7 @@ fun LoginPage(state: OnboardingState, listener: Listener<OnboardingEvents>, onBa
         ) {
 
         }
+
         Gap(10)
         CustomTextField(
             placeholder = "Пароль",
@@ -77,8 +78,8 @@ fun LoginPage(state: OnboardingState, listener: Listener<OnboardingEvents>, onBa
             trailingImage = if (state.isPasswordVisible) BaselineVisibilityOff24 else BaselineVisibility24
         ) {
             listener(OnboardingEvents.HidePassword)
-
         }
+
         Spacer(modifier = Modifier.weight(1f))
         CustomButton(
             title = "Войти",

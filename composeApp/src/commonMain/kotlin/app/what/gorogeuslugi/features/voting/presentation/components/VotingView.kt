@@ -67,7 +67,7 @@ fun VotingView(
         Gap(12)
         HorizontalDivider(modifier = Modifier.fillMaxWidth().padding(16.dp))
         Gap(12)
-        ProtocolBlock(state.meet?.meeting_link ?: "")
+        ProtocolBlock(state.sendDoc ?: "")
         Gap(12)
     }
 

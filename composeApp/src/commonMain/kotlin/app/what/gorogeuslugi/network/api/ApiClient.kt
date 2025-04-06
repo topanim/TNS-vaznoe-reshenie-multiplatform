@@ -3,7 +3,6 @@ package app.what.gorogeuslugi.network.api
 import app.what.gorogeuslugi.data.AppSettings
 import app.what.gorogeuslugi.features.voting.domain.models.Answer
 import app.what.gorogeuslugi.foundation.core.Monitor.Companion.monitored
-import co.touchlab.kermit.Logger
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.HttpRequestBuilder
@@ -14,7 +13,6 @@ import io.ktor.client.request.post
 import io.ktor.client.request.put
 import io.ktor.client.request.setBody
 import io.ktor.client.statement.bodyAsText
-import io.ktor.client.statement.request
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import kotlinx.serialization.SerialName
@@ -114,6 +112,9 @@ class ApiClient(
 
     suspend fun meetingsDelete(request: Api.Meetings.Delete.Request) =
         client.delete("$BASE_URL/meetings/${request.id}", addBodyWithAuth(request))
+
+    suspend fun meetingsSendDoc(request: Api.Meetings.SendDoc.Request): String =
+        client.post("$BASE_URL/meetings/${request.id}/send_doc", addBodyWithAuth(request)).bodyAsText()
 
     // ---
 
@@ -504,6 +505,13 @@ object Api {
             ) {
                 var comment by monitored("")
             }
+        }
+
+        object SendDoc {
+            @Serializable
+            data class Request(
+                val id: Int
+            ) : AuthRequest()
         }
 
         object Create {

@@ -59,11 +59,17 @@ class VotingController(
                     api.questionsGetAllByMeeting(Api.Questions.GetAllByMeeting.Request(meetId))
                 }
 
+                val sendDocDeffered = async {
+                    api.meetingsSendDoc(Api.Meetings.SendDoc.Request(meetId))
+                }
+
                 val meet = meetDeferred.await()
                 val question = questionsDeferred.await()
+                val sendDoc = sendDocDeffered.await()
 
                 updateState {
                     copy(
+                        sendDoc = sendDoc,
                         meetId = meetId,
                         meet = meet,
                         questions = question
