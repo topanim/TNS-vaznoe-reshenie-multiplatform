@@ -37,7 +37,7 @@ class OnboardingController(
         }
 
         is OnboardingEvents.CodeText -> {
-            updateState { copy(password = viewEvent.text) }
+            updateState { copy(code = viewEvent.text) }
         }
 
         OnboardingEvents.ShowAlert -> {
