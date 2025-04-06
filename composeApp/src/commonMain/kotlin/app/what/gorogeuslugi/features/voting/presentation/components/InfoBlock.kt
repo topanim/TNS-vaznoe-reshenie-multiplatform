@@ -18,28 +18,16 @@ import app.what.gorogeuslugi.theme.buttonBlack
 @Composable
 fun InfoBlock(
     icon: ImageVector,
-    text: String
+    text: String,
+    link: String? = null
 ) = Row(
     modifier = Modifier.fillMaxWidth()
 ) {
-    icon.Show(Modifier.size(24.dp))
-
-    Gap(10)
-
-    Text(text, color = buttonBlack)
-}
-
-@Composable
-fun Row(
-    icon: ImageVector,
-    text: AnnotatedString,
-    link: String? = null
-) = Column(
-    modifier = Modifier.fillMaxWidth()
-) {
     icon.Show(Modifier.size(24.dp).bclick(link != null) {
-        
+
     })
+
     Gap(10)
+
     Text(text, color = buttonBlack)
 }
