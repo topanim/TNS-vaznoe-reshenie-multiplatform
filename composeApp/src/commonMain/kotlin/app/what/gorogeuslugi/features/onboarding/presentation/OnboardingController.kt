@@ -29,11 +29,7 @@ class OnboardingController(
         }
 
         is OnboardingEvents.PasswordText -> {
-            co.touchlab.kermit.Logger.d("AAAAAAAAAAA: ${viewEvent.text}")
-
             updateState { copy(password = viewEvent.text) }
-
-            co.touchlab.kermit.Logger.d("AAAAAAAAAAA: ${viewState.password}")
         }
 
         is OnboardingEvents.CodeText -> {
