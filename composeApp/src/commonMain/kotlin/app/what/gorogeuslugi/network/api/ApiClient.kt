@@ -114,18 +114,25 @@ class ApiClient(
         client.delete("$BASE_URL/meetings/${request.id}", addBodyWithAuth(request))
 
     suspend fun meetingsSendDoc(request: Api.Meetings.SendDoc.Request): String =
-        client.post("$BASE_URL/meetings/${request.id}/send_doc", addBodyWithAuth(request)).bodyAsText()
+        client.post("$BASE_URL/meetings/${request.id}/send_doc", addBodyWithAuth(request))
+            .bodyAsText()
 
     // ---
 
     suspend fun questionsGetAll(request: Api.Questions.GetAll.Request): List<Api.Questions.GetAll.Response.Question> =
         client.get("$BASE_URL/question", addBodyWithAuth(request)).body()
 
-    suspend fun questionsGetAllByMeeting(request: Api.Questions.GetAllByMeeting.Request): List<Api.Questions.GetAllByMeeting.Response.Question> =
-        client.get(
+    suspend fun questionsGetAllByMeeting(request: Api.Questions.GetAllByMeeting.Request): List<Api.Questions.GetAllByMeeting.Response.Question> {
+        val rec = client.get(
             "$BASE_URL/question/meetings/${request.meeting_id}/questions",
             addBodyWithAuth(request)
-        ).body()
+        )
+        try {
+            return rec.body()
+        } catch (e: Exception) {
+            return emptyList()
+        }
+    }
 
     suspend fun questionsGetOne(request: Api.Questions.GetOne.Request): Api.Questions.GetOne.Response =
         client.get("$BASE_URL/question/${request.id}", addBodyWithAuth(request)).body()
