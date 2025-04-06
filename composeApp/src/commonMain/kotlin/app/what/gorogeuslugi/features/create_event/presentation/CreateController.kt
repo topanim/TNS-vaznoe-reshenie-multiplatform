@@ -53,8 +53,9 @@ class CreateController :
                 text = viewState.description,
                 status = false,
                 meeting_link = viewState.link,
-                role_id = 0,
+                role_id = 1,
                 ai_comment = "",
+                format = viewState.format,
                 id = 1
             ))
             setAction(CreateAction.OnBack)

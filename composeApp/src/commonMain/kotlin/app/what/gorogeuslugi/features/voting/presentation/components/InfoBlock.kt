@@ -9,11 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import app.what.gorogeuslugi.foundation.ui.Gap
 import app.what.gorogeuslugi.foundation.ui.Show
+import app.what.gorogeuslugi.foundation.ui.bclick
 import app.what.gorogeuslugi.theme.buttonBlack
 
 @Composable
@@ -31,13 +30,16 @@ fun InfoBlock(
 }
 
 @Composable
-fun InfoBlock(
+fun Row(
     icon: ImageVector,
-    text: AnnotatedString
+    text: AnnotatedString,
+    link: String? = null
 ) = Column(
     modifier = Modifier.fillMaxWidth()
 ) {
-    icon.Show(Modifier.size(24.dp))
+    icon.Show(Modifier.size(24.dp).bclick(link != null) {
+        
+    })
     Gap(10)
     Text(text, color = buttonBlack)
 }

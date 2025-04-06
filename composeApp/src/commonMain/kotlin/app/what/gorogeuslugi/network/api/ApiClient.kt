@@ -482,6 +482,7 @@ object Api {
                     val status: Boolean,
                     val meeting_link: String,
                     val role_id: Int,
+                    val format: String,
                     val ai_comment: String?
                 )
             }
@@ -499,6 +500,7 @@ object Api {
                 val title: String,
                 val text: String,
                 val status: Boolean,
+                val format: String,
                 val meeting_link: String,
                 val role_id: Int,
                 val ai_comment: String?
@@ -520,6 +522,7 @@ object Api {
                 val id: Int,
                 val title: String,
                 val text: String,
+                val format: String,
                 val status: Boolean,
                 val meeting_link: String,
                 val role_id: Int,
@@ -534,6 +537,7 @@ object Api {
                 val status: Boolean,
                 val meeting_link: String,
                 val role_id: Int,
+                val format: String,
                 val ai_comment: String?
             )
         }
@@ -545,6 +549,7 @@ object Api {
                 val title: String,
                 val text: String,
                 val status: Boolean,
+                val format: String,
                 val meeting_link: String,
                 val role_id: Int
             ) : AuthRequest()
@@ -555,6 +560,7 @@ object Api {
                 val title: String,
                 val text: String,
                 val status: Boolean,
+                val format: String,
                 val meeting_link: String,
                 val role_id: Int,
                 val ai_comment: String?

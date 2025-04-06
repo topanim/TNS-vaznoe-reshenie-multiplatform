@@ -1,5 +1,6 @@
 package app.what.gorogeuslugi.di
 
+import androidx.compose.runtime.Composable
 import app.what.gorogeuslugi.features.create_event.domain.CreateEventUseCase
 import app.what.gorogeuslugi.features.create_event.domain.CreateEventUseCaseImpl
 import app.what.gorogeuslugi.features.create_event.presentation.CreateController
@@ -83,3 +84,8 @@ fun appLog(message: String) {
 }
 
 fun initLogs() = Napier.base(DebugAntilog())
+
+expect object BrowserOpener {
+    @Composable
+    fun openUrl(url: String)
+}
